@@ -1,0 +1,125 @@
+{
+  "name": "material-symbols-react",
+  "version": "0.1.0",
+  "description": "Material Symbols as React components with TypeScript support",
+  "type": "module",
+  "main": "./dist/outlined/index.js",
+  "types": "./dist/outlined/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/outlined/index.d.ts",
+      "import": "./dist/outlined/index.js"
+    },
+    "./outlined": {
+      "types": "./dist/outlined/index.d.ts",
+      "import": "./dist/outlined/index.js"
+    },
+    "./rounded": {
+      "types": "./dist/rounded/index.d.ts",
+      "import": "./dist/rounded/index.js"
+    },
+    "./sharp": {
+      "types": "./dist/sharp/index.d.ts",
+      "import": "./dist/sharp/index.js"
+    },
+    "./w*": {
+      "types": "./dist/outlined/w*.d.ts",  
+      "import": "./dist/outlined/w*.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run build:icons && npm run build:lib",
+    "build:dev": "npm run clean && ICON_LIMIT=true npm run build:icons && npm run build:lib",
+    "build:icons": "npm run build:icons:export && npm run build:icons:weights",
+    "build:icons:dev": "npm run build:icons:export:dev && npm run build:icons:weights:dev",
+    "build:icons:export": "node --max-old-space-size=16384 scripts/generate-icons.cjs",
+    "build:icons:export:dev": "ICON_LIMIT=true node scripts/generate-icons.cjs",
+    "build:icons:weights": "node --max-old-space-size=16384 scripts/generate-weight-exports.cjs",
+    "build:icons:weights:dev": "ICON_LIMIT=true node scripts/generate-weight-exports.cjs",
+    "build:lib": "npm run build:lib:main && npm run build:lib:types",
+    "build:lib:main": "node --max-old-space-size=16384 node_modules/.bin/rollup -c rollup.config.mjs",
+    "build:lib:types": "node --max-old-space-size=8192 scripts/build-dts.mjs",
+    "clean": "rimraf dist",
+    "dev": "ICON_LIMIT=true rollup -c -w",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "npm run clean && npm run build && npm run test && npm run lint"
+  },
+  "keywords": [
+    "react",
+    "icons",
+    "material-symbols",
+    "typescript",
+    "components",
+    "svg"
+  ],
+  "author": "h-s-h-r",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/k-s-h-r/material-symbols-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/k-s-h-r/material-symbols-react/issues"
+  },
+  "homepage": "https://github.com/k-s-h-r/material-symbols-react",
+  "peerDependencies": {
+    "react": ">=16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@material-symbols/svg-100": "^0.21.0",
+    "@material-symbols/svg-200": "^0.21.0",
+    "@material-symbols/svg-300": "^0.21.0",
+    "@material-symbols/svg-400": "^0.21.0",
+    "@material-symbols/svg-500": "^0.21.0",
+    "@material-symbols/svg-600": "^0.21.0",
+    "@material-symbols/svg-700": "^0.21.0",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.24",
+    "@types/react": "^19.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "prettier": "^3.2.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.1.0",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.12.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-esbuild": "^6.2.1",
+    "ts-jest": "^29.1.2",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
