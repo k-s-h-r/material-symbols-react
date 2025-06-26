@@ -1,4 +1,4 @@
-import React, { forwardRef, createElement } from 'react';
+import { forwardRef, createElement } from 'react';
 import { IconProps } from './types';
 
 /**

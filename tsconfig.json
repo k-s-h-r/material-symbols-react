@@ -21,13 +21,7 @@
     "outDir": "dist",
     "rootDir": "src"
   },
-  "include": [
-    "src/index.ts",
-    "src/rounded.ts", 
-    "src/sharp.ts",
-    "src/createMaterialIcon.tsx",
-    "src/types/**/*"
-  ],
+  "include": ["src/**/*"],
   "exclude": [
     "node_modules",
     "dist",

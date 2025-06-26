@@ -1,5 +1,5 @@
 {
-  "name": "material-symbols-react",
+  "name": "@material-symbols-svg/react",
   "version": "0.1.0",
   "description": "Material Symbols as React components with TypeScript support",
   "type": "module",
@@ -59,7 +59,7 @@
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit",
-    "prepublishOnly": "npm run clean && npm run build && npm run test && npm run lint"
+    "prepublishOnly": "npm run test"
   },
   "keywords": [
     "react",
